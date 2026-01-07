@@ -1,3 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
-sudo sysctl vm.swappiness=10
+sudo swapoff -a
+sudo swapon -a
