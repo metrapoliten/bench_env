@@ -13,15 +13,12 @@ echo "Starting $ITERATIONS iterations on core $CPU..."
 
 sudo -v
 
-sudo systemctl set-property --runtime -- init.scope AllowedCPUs=0-14
-sudo systemctl set-property --runtime -- system.slice AllowedCPUs=0-14
-
 for ((i=1; i<=ITERATIONS; i++)); do
     eval "$PRE" > /dev/null 2>&1
-    echo 3 | sudo tee /proc/sys/vm/drop_caches > /dev/null
-    sync
+
+    sync; echo 3 | sudo tee /proc/sys/vm/drop_caches > /dev/null
     
-    result=$(perf stat -x, -e duration_time -- taskset -c "$CPU" $RUN 2>&1)
+    result=$(perf stat -C "$CPU" -x, -e duration_time -- taskset -c "$CPU" $RUN 2>&1)
     
     exec_time=$(echo "$result" | tail -n 1 | cut -d, -f1)
     exec_time=$(printf "%010d" "$exec_time" | sed -E 's/(.*)(.{9})/\1.\2/; s/0+$//; s/\.$//')   
