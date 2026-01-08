@@ -10,27 +10,28 @@ BENCH="perf stat -C $CPU -x, -e duration_time -- taskset -c $CPU $RUN"
 
 times=()
 
-echo "Starting $ITERATIONS iterations on core $CPU..."
-
 sudo -v
 
-for ((i=1; i<=ITERATIONS; i++)); do
-    eval "$PRE" > /dev/null 2>&1
+echo "Starting $ITERATIONS iterations on core $CPU..."
 
-    sync; echo 3 | sudo tee /proc/sys/vm/drop_caches > /dev/null
-    
-    result=$($BENCH 2>&1)
-    
-    exec_time=$(echo "$result" | tail -n 1 | cut -d, -f1)
-    exec_time=$(printf "%010d" "$exec_time" | sed -E 's/(.*)(.{9})/\1.\2/; s/0+$//; s/\.$//')   
+for ((i = 1; i <= ITERATIONS; i++)); do
+  eval "$PRE" >/dev/null 2>&1
 
-    times+=("$exec_time")
+  sync
+  echo 3 | sudo tee /proc/sys/vm/drop_caches >/dev/null
 
-    echo "Iteration $i/$ITERATIONS: $exec_time s"
+  result=$($BENCH 2>&1)
+
+  exec_time=$(echo "$result" | tail -n 1 | cut -d, -f1)
+  exec_time=$(printf "%010d" "$exec_time" | sed -E 's/(.*)(.{9})/\1.\2/; s/0+$//; s/\.$//')
+
+  times+=("$exec_time")
+
+  echo "Iteration $i/$ITERATIONS: $exec_time s"
 done
 
-echo "PRE=$PRE" > "$OUTPUT_FILE"
-echo "RUN=$RUN" >> "$OUTPUT_FILE"
-echo "${times[@]}" >> "$OUTPUT_FILE"
+echo "PRE=$PRE" >"$OUTPUT_FILE"
+echo "RUN=$RUN" >>"$OUTPUT_FILE"
+echo "${times[@]}" >>"$OUTPUT_FILE"
 
 echo "Done. Commands and times saved to $OUTPUT_FILE"
