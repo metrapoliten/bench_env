@@ -1,14 +1,22 @@
 = url
-== bench
+== env
 * https://llvm.org/docs/Benchmarking.html#linux
 * https://easyperf.net/blog/2019/08/02/Perf-measurement-environment-on-Linux
 * https://juliaci.github.io/BenchmarkTools.jl/stable/linuxtips/
+== method
+* https://github.com/spbu-se/measurements
+* https://vkvideo.ru/video-226636130_456239122
 
-== other
-=== cpuset
+== cpuset problems on Arch
 * https://forum.proxmox.com/threads/cset-failing-pve7.95613/
 * https://github.com/SUSE/cpuset/issues/40#issuecomment-833479062
 
 = utils:
-* `perf --null` is broken in `6.18`, should be fixed in `6.19`
+* `hyperfine`
+* `perf-stat`
+* `taskset`
+* `cpuset`
+
+= notes
+* `perf stat --null` is broken in `6.18`, should be fixed in `6.19`
 * `systemd` doesn't allow cset
