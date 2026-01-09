@@ -1,23 +1,22 @@
-= url
-== env
+=== env
 * https://llvm.org/docs/Benchmarking.html#linux
 * https://easyperf.net/blog/2019/08/02/Perf-measurement-environment-on-Linux
-* https://juliaci.github.io/BenchmarkTools.jl/stable/linuxtips/
+* https://juliaci.github.io/BenchmarkTools.jl/stable/linuxtips
 
-== method
+=== method (on Russian)
 * https://github.com/spbu-se/measurements
 * https://vkvideo.ru/video-226636130_456239122
 
-== cpuset problems on Arch
-* https://forum.proxmox.com/threads/cset-failing-pve7.95613/
+=== cpuset problems with systemd
+* https://forum.proxmox.com/threads/cset-failing-pve7.95613
 * https://github.com/SUSE/cpuset/issues/40#issuecomment-833479062
 
-= utils:
-* `hyperfine`
-* `perf-stat`
-* `taskset`
-* `cpuset`
+=== utils
+* https://github.com/sharkdp/hyperfine[`hyperfine`]
+* https://perfwiki.github.io/main[`perf-stat`]
+* https://www.man7.org/linux/man-pages/man1/taskset.1.html[`taskset`]
+* https://github.com/SUSE/cpuset[`cpuset`]
 
-= notes
-* `perf stat --null` is broken in `6.18`, should be fixed in `6.19`
-* `systemd` doesn't allow cset
+=== notes
+* `perf stat --null` is link:++https://lore.kernel.org/linux-perf-users/CAP-5=fXK8HORZaFUxydEatLV1xXQTcLLBnEMeveJYDHDQPkf_w@mail.gmail.com++[broken]
+in `6.18`, should be fixed in `6.19`
