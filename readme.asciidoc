@@ -21,3 +21,4 @@
 === notes
 * `perf stat --null` is link:++https://lore.kernel.org/linux-perf-users/CAP-5=fXK8HORZaFUxydEatLV1xXQTcLLBnEMeveJYDHDQPkf_w@mail.gmail.com++[broken]
 in `6.18`, should be fixed in `6.19`
+* Perhaps it might be better not to disable ASLR (look at 3.3 in https://probablydance.com/2025/05/31/im-open-sourcing-my-custom-benchmark-gui/#7cc6162b-e838-4a7f-af81-ad9bd4b2e12e-link[source]) 
