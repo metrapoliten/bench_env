@@ -12,11 +12,15 @@
 * https://github.com/SUSE/cpuset/issues/40#issuecomment-833479062
 
 === utils
-* https://github.com/sharkdp/hyperfine[`hyperfine`]
-* https://perfwiki.github.io/main[`perf-stat`]
-* https://www.man7.org/linux/man-pages/man1/taskset.1.html[`taskset`]
-* https://github.com/SUSE/cpuset[`cpuset`]
-* https://github.com/andrewrk/poop[`poop`]
+// [frame=none, grid=none]
+[cols="1,1,1,1,1"]
+|===
+|https://github.com/sharkdp/hyperfine[`hyperfine`]
+|https://perfwiki.github.io/main[`perf-stat`]
+|https://www.man7.org/linux/man-pages/man1/taskset.1.html[`taskset`]
+|https://github.com/SUSE/cpuset[`cpuset`]
+|https://github.com/andrewrk/poop[`poop`]
+|===
 
 === notes
 * `perf stat --null` is link:++https://lore.kernel.org/linux-perf-users/CAP-5=fXK8HORZaFUxydEatLV1xXQTcLLBnEMeveJYDHDQPkf_w@mail.gmail.com++[broken]
