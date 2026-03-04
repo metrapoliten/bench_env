@@ -1,4 +1,5 @@
 === env
+* NB! https://github.com/tarantool/tarantool/wiki/Benchmarking
 * https://llvm.org/docs/Benchmarking.html#linux
 * https://easyperf.net/blog/2019/08/02/Perf-measurement-environment-on-Linux
 * https://juliaci.github.io/BenchmarkTools.jl/stable/linuxtips
